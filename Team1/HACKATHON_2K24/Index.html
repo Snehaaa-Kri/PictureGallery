@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FAVICON     -->
+    <link rel="shortcut icon" href="./index/logo.jpg" type="image/x-icon">
+
+
+    <!-- FONT AWESOME  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Crimson.com</title>
+
+
+    <!-- Hero section css  -->
+    <style>
+        .hero{
+            margin:0;
+            overflow: hidden;
+            font-size:0;
+            
+        }
+        canvas{
+            
+            width: 100vw;
+            height: 72vh;
+            
+        }
+   
+
+
+
+    </style>
+
+        
+        
+
+</head>
+<body>
+    <!-- nav bar -->
+    <div class="pb-10 border-b-[2px] border-white relative z-99  ">
+        <nav class=" fixed flex justify-between items-center sm:px-6 md:px-6 lg:px-28
+        p-3 bg-[#4b1c71] opacity-98 text-white h-100% w-full shadow-lg top-0">
+
+        <div class="flex justify-center items-center">
+            
+            <img class="h-8 sm:h-8 lg:h-12 cursor-pointer rounded-[50%]"  src="./index/logo1.jpg" alt="logo">
+
+            <div class="sm:flex gap-3 sm:gap-2 md:gap-4  pl-10 gap-10 font-semibold hidden md:visible">
+
+                <ul class="sm:flex gap-3 sm:gap-2 md:gap-4 lg:gap-10 font-semibold hidden md:visible" >
+                    <li><a class="cursor-pointer hover:text-gray-200 py-2 hover:border-b-2 px-2 hover:border-gray-300" href="Index.html">Home</a></li>
+
+                    <li><a class="cursor-pointer hover:text-gray-200 py-2 hover:border-b-2 px-2 hover:border-gray-300 " href="about.html">About Us</a></li>
+
+                    
+                    <li><a class="cursor-pointer hover:text-gray-200 hover:border-b-2 px-2 hover:border-gray-300 " href="contact_final.html">Contact Us</a></li>
+
+                </ul>
+            
+            </div>
+        </div>
+        <!-- Buttons -->
+            <div class="flex items-center justify-center gap-2"> 
+                
+                <a href="#">
+
+                    <div class="flex justify-between px-5 md:px-5 sm:px-3 py-2 rounded-lg text-white border-[1px] hover:bg-white hover:text-black font-semibold cursor-pointer ">
+
+                        <label class="relative overflow-hidden inline-block mr-1">
+
+                          <input type="file" accept="image/*" class="absolute top-0 right-0 min-w-full min-h-full text-4xl text-right opacity-0 cursor-pointer">
+                          
+                          <span class="cursor-pointer hover:text-gray-200 hover:border-b-2 px-2 text-center hover:border-gray-300 "> Upload</span>
+                        </label>
+                    </div>
+
+                </a>
+                
+                <form action="frontPage.html" class="container">
+                    <!-- <p class="px-5 md:px-5 sm:px-3 py-2 rounded-lg text-white border-[1px] hover:bg-white hover:text-black font-semibold cursor-pointer  ">Switch Account </p> -->
+
+                    <button type="submit" class="px-5 md:px-5 sm:px-3 py-2 rounded-lg text-white border-[1px] hover:bg-white hover:text-black font-semibold cursor-pointer  " style="font-size:16px">Switch Account</button>                 
+                </form>
+
+                <a href="explore.html" class="px-5 md:px-5 sm:px-3 py-2 rounded-lg text-black border-[1px] bg-white hover:bg-[#e8e8e8] font-semibold cursor-pointer ">Explore</a>
+            </div>
+
+        </nav>
+    </div>
+    
+    <!-- Hero section  -->
+    <div class="hero h-[23rem] bg-gray-500 ">
+    
+    <canvas class="bg-[#4b1c71]" id="scene"></canvas>
+	    <input id="copy" type="text" value="C R I M S O N" />
+
+        <script>
+            var canvas = document.querySelector("#scene"),
+        ctx = canvas.getContext("2d"),
+        particles = [],
+        amount = 0,
+        mouse = {x:0,y:0},
+        radius = 1;
+
+        var colors = ["#468966","#FFF0A5", "#FFB03B","#B64926", "#8E2800"];
+
+        var copy = document.querySelector("#copy");
+
+        var ww = canvas.width = window.innerWidth;
+        var wh = canvas.height = window.innerHeight;
+
+        function Particle(x,y){
+        this.x =  Math.random()*ww;
+        this.y =  Math.random()*wh;
+        this.dest = {
+            x : x,
+            y: y
+        };
+        this.r =  Math.random()*5 + 2;
+        this.vx = (Math.random()-0.5)*20;
+        this.vy = (Math.random()-0.5)*20;
+        this.accX = 0;
+        this.accY = 0;
+        this.friction = Math.random()*0.05 + 0.94;
+
+        this.color = colors[Math.floor(Math.random()*6)];
+        }
+
+        Particle.prototype.render = function() {
+
+
+        this.accX = (this.dest.x - this.x)/1000;
+        this.accY = (this.dest.y - this.y)/1000;
+        this.vx += this.accX;
+        this.vy += this.accY;
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+
+        this.x += this.vx;
+        this.y +=  this.vy;
+
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
+        ctx.fill();
+
+        var a = this.x - mouse.x;
+        var b = this.y - mouse.y;
+
+        var distance = Math.sqrt( a*a + b*b );
+        if(distance<(radius*70)){
+            this.accX = (this.x - mouse.x)/100;
+            this.accY = (this.y - mouse.y)/100;
+            this.vx += this.accX;
+            this.vy += this.accY;
+        }
+
+        }
+
+        function onMouseMove(e){
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        }
+
+        function onTouchMove(e){
+        if(e.touches.length > 0 ){
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
+        }
+        }
+
+        function onTouchEnd(e){
+        mouse.x = -9999;
+        mouse.y = -9999;
+        }
+
+        function initScene(){
+        ww = canvas.width = window.innerWidth;
+        wh = canvas.height = window.innerHeight;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = "bold "+(ww/10)+"px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(copy.value, ww/2, wh/2);
+
+        var data  = ctx.getImageData(0, 0, ww, wh).data;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = "screen";
+
+        particles = [];
+        for(var i=0;i<ww;i+=Math.round(ww/150)){
+            for(var j=0;j<wh;j+=Math.round(ww/150)){
+            if(data[ ((i + j*ww)*4) + 3] > 150){
+                particles.push(new Particle(i,j));
+            }
+            }
+        }
+        amount = particles.length;
+
+        }
+
+        function onMouseClick(){
+        radius++;
+        if(radius ===5){
+            radius = 0;
+        }
+        }
+
+        function render(a) {
+        requestAnimationFrame(render);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < amount; i++) {
+            particles[i].render();
+        }
+        };
+
+        copy.addEventListener("keyup", initScene);
+        window.addEventListener("resize", initScene);
+        window.addEventListener("mousemove", onMouseMove);
+        window.addEventListener("touchmove", onTouchMove);
+        window.addEventListener("click", onMouseClick);
+        window.addEventListener("touchend", onTouchEnd);
+        initScene();
+        requestAnimationFrame(render);
+
+
+        </script>
+    </div>
+
+    <!-- Content section  -->
+    
+    <div class="bg-[#FEECE2] h-[15rem] ">
+        <!-- SEARCH BOX       -->
+        <!-- <div class=" bottom-[-20px] border z-10 bg-white w-[580px] h-[60px]  ml-[28%] flex items-center p-2 text-[#212529] rounded ">
+                  
+            <i class="fa-solid fa-magnifying-glass text-xl w-5 text-gray-500  "></i>
+
+            <input type="text" name="Searches places" placeholder="Search" class="py-[6px] pl-3 pr-10 bg-cover w-[93%] outline-none font-medium text-gray-500"  >
+        </div> -->
+
+        <!-- Sections -->
+        <div class=" flex justify-center items-center bg-gradient-to-b from-[#4b1c71] to-purple-100 px-28 pt-14 h-[600px] py-10 border-b-2 border-[#FEECE2]">
+            <!-- animation -->
+            <div class="w-[200rem] bg-white" >
+                <img class="" src="./index/uploadAnimation.gif" alt="">
+            </div>
+
+            <!-- content  -->
+            <div class="w-50% pl-16 p-7 Left text-lg items-center">
+                
+                <p class="text-6xl text-white font-semibold pb-7">Your Visual Tale Unveiled </p>
+                <p class="text-gray-100">
+                    Crimson is more than just a picture gallery; it's a curated space where visual stories come to life. Immerse yourself in a vibrant collection of snapshots that capture moments, emotions, and creativity. Whether you're a photography enthusiast or simply seeking inspiration, Crimson provides a canvas for individuals to share their unique perspectives. From breathtaking landscapes to candid portraits, each image contributes to the diverse tapestry of visual narratives. Join our community, explore the depths of creativity, and declare your visual tale at Crimson.
+                </p>
+            </div>
+        </div>
+
+        <!-- Upload Section  -->
+        <div class="flex justify-between items-center bg-[#F1EAFF] px-28 ">
+
+            <!-- left  -->
+            <div class=" w-[50%] pl-5 py-20">
+                <p class="text-7xl font-bold text-purple-700 pb-14">
+                    Snap and share, declare your glare!
+                </p>
+
+                <p class="text-3xl pl-7 font-bold text-purple-400 pb-10">Shape the gallery with your unique snapshot – your visual tale.</p>
+            </div>
+            <!-- right  -->
+            <div class="w-[40%]">
+                <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/vczwnict.json"
+                    trigger="hover"
+                    style="width:600px ;height:600px ;padding: 20px;">
+                </lord-icon>
+
+            </div>
+        </div>
+
+
+        <!-- Download Section  -->
+        <div class="flex justify-between items-center bg-[#FFFFEC] px-28">
+            <!-- left  -->
+            <div class="fa-3x p-28">  
+                <i class="fa-solid fa-download text-[350px] fa-beat-fade text-orange-500" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;" ></i>
+            </div>
+
+            <!-- right  -->
+            <div class="pl-5 py-20">
+                <p class="text-7xl font-bold text-orange-500 pb-14">
+                    Secure the image you adore.
+                </p>
+
+                <p class="text-3xl pl-7 font-bold text-orange-400 pb-10">Seize your preferred image – a simple download awaits you.</p>
+            </div>
+            
+        </div>
+
+        <!-- Upload Section  -->
+        <div class="flex justify-between items-center bg-[#d7eaf7] px-28">
+            <!-- left  -->
+            <div class="pl-5 py-20">
+                <p class="text-7xl font-bold text-blue-800 pb-14">Discover a vibrant spectrum.</p>
+                 
+                <p class="text-3xl pl-7 font-bold text-blue-600 pb-10">Each image is a brushstroke in the canvas of creativity, waiting for you to explore.</p>
+                
+            </div>
+            
+            <!-- right  -->
+            <div class="relative z-20">
+                <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/wleoetna.json"
+                    trigger="hover"
+                    colors="primary:#16c72e,secondary:#2516c7"
+                    style="width:600px; height:600px; padding: 20px;"
+                ></lord-icon>
+            </div>
+            
+            
+        </div>
+
+        <!-- Most popular -->
+        <div class="flex justify-center items-center p-10">
+            <p class="text-2xl ">Most Popular</p>
+        </div>
+
+        <!-- cards section  -->
+        <div class="h-[24rem] bg-[#daf2c9] py-20 flex justify-between items-center gap-5 px-28">
+            
+            <!-- card1 -->
+                <div class="h-[20rem] p-3  w-full bg-white p-3 pb-14">
+                    <img class="h-full w-[19rem] rounded-lg" src="index/5.avif" alt="">
+
+                    <div class="text-gray-500 flex justify-between items-center px-3 py-2">
+
+                        <!-- link  -->
+                        <p  class="cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">   
+                            <i  class="fa-solid fa-link text-lg"></i>
+                        
+                        </p>
+
+                        <!-- eye  -->
+                        
+                            <div class="flex justify-between items-center cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">
+                                <i id="changeColorTexteye" class="fa-solid fa-eye text-lg "></i>
+                                <p class="text-[0.8rem] font-bold pl-1">28,072</p>
+                            </div>
+                            
+                        
+
+                        <!-- comment  -->
+                        
+                            <div class="flex justify-between items-center   cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">
+                                <i class="fa-solid fa-comment text-lg " id="changeColorTextcomment"></i>
+                                <p class="text-[0.8rem] font-bold pl-1">65</p>
+                            </div>
+                                
+                            
+                        <!-- like -->
+                        <div class="flex justify-between items-center cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300" >
+                            <i id="likeContainer" class="fa-solid fa-thumbs-up text-lg"></i>
+                            <p class="text-[0.8rem] font-bold pl-1">5,765</p>
+                        </div>
+                        
+                        <script>
+                            const likeContainer = document.getElementById('likeContainer');
+                        
+                            likeContainer.addEventListener('click', function () {
+                            // Toggle between gray and blue text color on click
+                            likeContainer.classList.toggle('text-gray-500');
+                            likeContainer.classList.toggle('text-blue-500');
+                            });
+                        </script>
+                        
+                        </div>
+                </div>
+
+            <!-- card2 -->
+                <div class="h-[20rem] p-3  w-full bg-white p-3 pb-14">
+                    <img class="h-full  w-[19rem] rounded-lg" src="index/6.avif" alt="">
+
+                    <div class="text-gray-500 flex justify-between items-center px-3 py-2">
+
+                        <!-- link  -->
+                        <p  class="cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">   
+                            <i  class="fa-solid fa-link text-lg"></i>
+                        </p>
+
+                        <!-- eye  -->
+                        
+                            <div class="flex justify-between items-center cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">
+                                <i id="changeColorTexteye" class="fa-solid fa-eye text-lg "></i>
+                                <p class="text-[0.8rem] font-bold pl-1">58,807</p>
+                            </div>
+                            
+                        
+                        <!-- comment  -->
+                        
+                            <div class="flex justify-between items-center   cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">
+                                <i class="fa-solid fa-comment text-lg " id="changeColorTextcomment"></i>
+                                <p class="text-[0.8rem] font-bold pl-1">47</p>
+                            </div>
+                            
+                        <!-- like -->
+                        <div class="flex justify-between items-center cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300" >
+                            <i id="likeContainer2" class="fa-solid fa-thumbs-up text-lg"></i>
+                            <p class="text-[0.8rem] font-bold pl-1">1,842</p>
+                        </div>
+                        
+                        <script>
+                            const likeContainer2 = document.getElementById('likeContainer2');
+                        
+                            likeContainer2.addEventListener('click', function () {
+                            likeContainer2.classList.toggle('text-gray-500');
+                            likeContainer2.classList.toggle('text-blue-500');
+                            });
+                        </script>
+                        
+                        </div>
+
+                </div>
+
+        
+            <!-- card3 -->
+                <div class="h-[20rem] p-3 w-full bg-white p-3 pb-14">
+                    <img class="h-full w-[19rem] rounded-lg" src="index/7.avif" alt="">
+
+                    <div class="text-gray-500 flex justify-between items-center px-3 py-2">
+
+                        <!-- link  -->
+                        <p  class="cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">   
+                            <i  class="fa-solid fa-link text-lg"></i>
+                        </p>
+
+                        <!-- eye  -->
+                        
+                            <div class="flex justify-between items-center cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">
+                                <i id="changeColorTexteye" class="fa-solid fa-eye text-lg "></i>
+                                <p class="text-[0.8rem] font-bold pl-1">39,139</p>
+                            </div>
+                            
+                        
+                        <!-- comment  -->
+                        
+                            <div class="flex justify-between items-center   cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">
+                                <i class="fa-solid fa-comment text-lg " id="changeColorTextcomment"></i>
+                                <p class="text-[0.8rem] font-bold pl-1">96</p>
+                            </div>
+                            
+                        <!-- like -->
+                        <div class="flex justify-between items-center cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300" >
+                            <i id="likeContainer3" class="fa-solid fa-thumbs-up text-lg"></i>
+                            <p class="text-[0.8rem] font-bold pl-1">3,462</p>
+                        </div>
+                        
+                        <script>
+                            const likeContainer3 = document.getElementById('likeContainer3');
+                        
+                            likeContainer3.addEventListener('click', function () {
+                            likeContainer3.classList.toggle('text-gray-500');
+                            likeContainer3.classList.toggle('text-blue-500');
+                            });
+                        </script>
+                        
+                        </div>
+
+                </div>
+
+            <!-- card4     -->
+                <div class="h-[20rem] p-3 w-full bg-white p-3 pb-14">
+                    <img class="h-full w-[19rem] rounded-lg" src="index/8.avif" alt="">
+
+                    <div class="text-gray-500 flex justify-between items-center px-3 py-2">
+
+                        <!-- link  -->
+                        <p  class="cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">   
+                            <i  class="fa-solid fa-link text-lg"></i>
+                        </p>
+
+                        <!-- eye  -->
+                        
+                            <div class="flex justify-between items-center cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">
+                                <i id="changeColorTexteye" class="fa-solid fa-eye text-lg "></i>
+                                <p class="text-[0.8rem] font-bold pl-1">39,139</p>
+                            </div>
+                            
+                        
+                        <!-- comment  -->
+                        
+                            <div class="flex justify-between items-center   cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300">
+                                <i class="fa-solid fa-comment text-lg " id="changeColorTextcomment"></i>
+                                <p class="text-[0.8rem] font-bold pl-1">46</p>
+                            </div>
+                            
+                        <!-- like -->
+                        <div class="flex justify-between items-center cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300" >
+                            <i id="likeContainer4" class="fa-solid fa-thumbs-up text-lg"></i>
+                            <p class="text-[0.8rem] font-bold pl-1">1,546</p>
+                        </div>
+                        
+                        <script>
+                            const likeContainer4 = document.getElementById('likeContainer4');
+                        
+                            likeContainer4.addEventListener('click', function () {
+                            likeContainer4.classList.toggle('text-gray-500');
+                            likeContainer4.classList.toggle('text-blue-500');
+                            });
+                        </script>
+                        
+                        </div>
+
+                </div> 
+        </div>
+
+
+        
+            <!-- Footer section  -->
+        <footer class="bg-gray-800 text-gray-200 pt-14 pb-6">
+            <div class="container mx-auto ">
+                <div class="flex flex-wrap justify-between items-center pb-14">
+                    <!-- Left section of the footer -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 text-center">
+                        <h3 class="text-2xl font-bold mb-4">Contact Us :</h3>
+                        <p class="hover:font-semibold hover:text-white cursor-pointer text-lg ">Email: info@crimson.com</p>
+                        <p class="hover:font-semibold hover:text-white cursor-pointer text-lg ">Phone: +1 (123) 456-7890</p>
+                    </div>
+        
+                    <!-- Middle section of the footer -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 mt-6 md:mt-0 text-center">
+                        <h3 class="text-2xl font-bold mb-4">Quick Links :</h3>
+                        <ul>
+                            <li><a class="hover:font-semibold hover:text-white cursor-pointer text-lg " href="Index.html">Home</a></li>
+                            <li><a class="hover:font-semibold hover:text-white cursor-pointer text-lg " href="about.html">About Us</a></li>
+                            <li><a class="hover:font-semibold hover:text-white cursor-pointer text-lg " href="contact_final.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Right section of the footer -->
+                    <div class="w-full mt-6 lg:w-1/3 lg:mt-0 text-center">
+                        <h3 class="text-2xl font-bold mb-4">Follow Us : </h3>
+                        <div class="flex space-x-4 justify-center">
+                            <a href="https://en-gb.facebook.com/login/" class="hover:font-semibold hover:text-white cursor-pointer text-4xl"><i class="fab fa-facebook"></i></a>
+
+                            <a href="https://twitter.com/i/flow/login" class="hover:font-semibold hover:text-white cursor-pointer text-4xl"><i class="fab fa-twitter"></i></a>
+
+                            <a href="https://www.instagram.com/accounts/login/?hl=en" class="hover:font-semibold hover:text-white cursor-pointer text-4xl"><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Bottom section of the footer -->
+                <div class="pt-6 text-center text-center cursor-pointer border-t-[1px] border-gray-600">
+                    <p>&copy; 2024 Crimson.com. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>   
+</body>
+</html>

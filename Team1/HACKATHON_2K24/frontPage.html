@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<style>
+* {
+  box-sizing: border-box;
+}
+ body{
+  overflow: hidden;
+ }
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 6px;
+  background-color: black;
+  
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 20%; /* IE10 */
+  flex: 20%;
+  max-width: 20%;
+  padding: 0 6px;
+  position: relative;
+  animation: myfirst 10s;
+  animation-direction: alternate;
+ 
+}
+
+@keyframes myfirst {
+  0%   {left: 0px; bottom: 0px;}
+  25%  {left: 0px; bottom: 500px;}
+  50%  {left: 0px; bottom: 0px;}
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  opacity: 0.7;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.container {
+  position: absolute;
+  right: 0;
+  margin-top: -10px;
+  margin-right: 150px;
+  max-width: 450px;
+  padding: 16px;
+  background-color: white;
+  font-family: sans-serif;
+  padding: 50px 50px;
+  padding-bottom: 200px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 15px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #E60023;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  border-radius: 25px;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+p {
+  font-size: 12px;
+}
+
+.text-block {
+  position: absolute;
+  top: 250px;
+  left: 50px;
+  max-width: 100%;
+  font-size: 40px;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: sans-serif;
+}
+
+</style>
+<body>
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="1.jpg" style="width:100%; border-radius: 18px">
+    <img src="2.jpg" style="width:100%; border-radius: 18px">
+    <img src="3.jpg" style="width:100%; border-radius: 18px">
+    <img src="4.jpg" style="width:100%; border-radius: 18px">
+    </div>
+
+    <div class="column">
+    <img src="5.jpg" style="width:100%; border-radius: 18px">
+    <img src="6.jpg" style="width:100%; border-radius: 18px">
+    <img src="7.jpg" style="width:100%; border-radius: 18px">
+    <img src="8.jpg" style="width:100%; border-radius: 18px">
+    </div>
+
+    <div class="column">
+      <img src="42.jpg" style="width:100%; border-radius: 18px">
+      <img src="14.jpg" style="width:100%; border-radius: 18px">
+      <img src="53.jpg" style="width:100%; border-radius: 18px">
+      <img src="16.jpg" style="width:100%; border-radius: 18px">
+      <img src="20.jpg" style="width:100%; border-radius: 18px">
+    </div>
+
+    <div class="column">
+    <img src="9.jpg" style="width:100%; border-radius: 18px">
+    <img src="10.jpg" style="width:100%; border-radius: 18px">
+    <img src="11.jpg" style="width:100%; border-radius: 18px">
+    <img src="1.jpg" style="width:100%; border-radius: 18px">
+    </div>
+
+  <div class="column">
+    <img src="27.jpg" style="width:100%; border-radius: 18px">
+    <img src="2.jpg" style="width:100%; border-radius: 18px">
+    <img src="48.jpg" style="width:100%; border-radius: 18px">
+    <img src="20.jpg" style="width:100%; border-radius: 18px">
+    </div>
+
+    <div class="text-block">
+      <h1>Sign up today to <br>explore ideas</h>
+     
+    </div>
+
+
+  <form action="Index.html" class="container">
+    <br> <br>
+    <center><h1 style="color: #E60023;">Welcome to Crimson</h1>
+    Be a member of our family!</center>
+    <br> <br>
+    <br>
+    <label for="name"><b>Name </b> </label>
+    <input type="text" placeholder="Enter Name" name="name" required>
+
+    <label for="email"><b>Email Address </b> </label>
+    <input type="text" placeholder="Enter Email Address" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Create a Password" name="psw" required>
+    <button type="submit" class="btn" style="font-size:16px">Continue</button>
+    <br><br>
+    <center><p>By continuing, you agree to "Name's" <b>terms and conditions</b> and aknowledge that you have read
+      our <b> Privacy Policy.</b></p></center>
+  </form>
+</div>
+
+</body>
+</html>

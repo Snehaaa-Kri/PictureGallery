@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 20px;
+}
+
+.portfolio {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+.portfolio li {
+  float: left;
+  margin-bottom:70px;
+  width: 100%;
+  list-style: none;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
+
+.portfolio figure:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.portfolio figure {
+  margin: 0 20px 0px 0;
+  position: relative;
+  text-align: center;
+  border: 3px solid #000;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 0;
+  overflow: hidden;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.portfolio figure:hover {
+  border: 3px solid #D29990;
+}
+.portfolio figure:hover img {
+  opacity: .3;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  -moz-transform: scale(5);
+  -ms-transform: scale(5);
+  -webkit-transform: scale(5);
+  transform: scale(5);
+}
+.portfolio figure:hover figcaption {
+  top: 50%;
+  margin-top: -20px;
+}
+.portfolio figure:hover h3 {
+  bottom: 70%;
+}
+.portfolio figcaption {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  -moz-transition: all 0.2s ease-in-out 0.2s;
+  -o-transition: all 0.2s ease-in-out 0.2s;
+  -webkit-transition: all 0.2s ease-in-out;
+  -webkit-transition-delay: 0.2s;
+  transition: all 0.2s ease-in-out 0.2s;
+}
+
+a.cap {
+  background-color: #D29990;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-shadow: 0 -1px 1px #cd452f;
+  text-decoration: none;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+a.cap:hover {
+  background-color: #e28e80;
+}
+
+h3 {
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  padding: 1em .7em;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  -moz-transition: all 0.15s ease-in-out 0.4s;
+  -o-transition: all 0.15s ease-in-out 0.4s;
+  -webkit-transition: all 0.15s ease-in-out;
+  -webkit-transition-delay: 0.4s;
+  transition: all 0.15s ease-in-out 0.4s;
+}
+
+.tabs {
+  margin: 0 0 20px 0;
+  padding: 0px;
+  overflow: hidden;
+}
+.tabs li {
+  list-style: none;
+  float: left;
+  margin: 20px 20px 0 0;
+}
+
+[data-filter*="group"] {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  width: auto;
+  height: auto;
+  padding: 0 1em;
+  border-bottom: 4px solid #c3786c;
+  position: relative;
+  -moz-transition: none;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
+[data-filter*="group"]:active {
+  top: 3px;
+  border-bottom: none;
+}
+[data-filter*="group"].active {
+  background-color: #e28e80;
+}
+
+@media (min-width: 460px) {
+  .portfolio li {
+    width: 50%;
+  }
+}
+@media (min-width: 740px) {
+  .portfolio li {
+    width: 33%;
+  }
+}
+
+h1.caption {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: -30px;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+}
+
+p.page-description {
+    text-align: center;
+    margin: 25px auto;
+    font-size: 18px;
+    color: #999;
+}
+
+  .open-button {
+  background-color:#fafafa;
+  color: #fafafa;
+  padding: 0px 0px;
+  border:none;
+  cursor: pointer;
+  opacity: 1;
+  position: fixed;
+  top: 210px;
+  bottom: 15px;
+  right: 35px;
+  width: 25px;
+  height: 0px;}
+
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 5px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  border-radius: 10px;
+
+}
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+    border-radius: 5px;
+
+}
+
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+  border-radius: 5px;
+  font-family: century gothic;
+
+}
+
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+  border-radius: 5px;
+}
+
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .cancel {
+  background-color: red;
+  border-radius: 5px;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    margin-top: 55px;
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    margin-top: 55px;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+.headers{
+  border: 2px solid black;
+  padding: 5px;
+  opacity: 1;
+  display:block;
+  position: fixed;
+  width: 303.5px;
+}
+.icon1 {
+    cursor: pointer;
+  }
+
+.icon2{
+    cursor: pointer;
+}
+.portfolio figure:hover + .headers {
+ 
+}
+
+
+</style>
+
+
+</head>
+<body>
+    <!-- nav bar -->
+    <div class=" pb-10 border-b-[2px] border-white relative z-99  ">
+      <nav class=" fixed flex justify-between items-center sm:px-6 md:px-6 lg:px-28
+      p-3 bg-[#4b1c71] opacity-98 text-white h-100% w-full shadow-lg top-0">
+
+      <div class="flex justify-center items-center">
+          
+          <img class="h-8 sm:h-8 lg:h-12 cursor-pointer rounded-[50%]"  src="./index/logo1.jpg" alt="logo">
+
+          <div class="sm:flex gap-3 sm:gap-2 md:gap-4  pl-10 gap-10 font-semibold hidden md:visible">
+
+              <ul class="sm:flex gap-3 sm:gap-2 md:gap-4 lg:gap-10 font-semibold hidden md:visible" >
+                  <li><a class="cursor-pointer hover:text-gray-200 py-2 hover:border-b-2 px-2 hover:border-gray-300" href="Index.html">Home</a></li>
+
+                  <li><a class="cursor-pointer hover:text-gray-200 py-2 hover:border-b-2 px-2 hover:border-gray-300 " href="about.html">About</a></li>
+
+                  
+                  <li><a class="cursor-pointer hover:text-gray-200 hover:border-b-2 px-2 hover:border-gray-300 pb-2" href="contact_final.html">Contact</a></li>
+
+              </ul>
+          
+          </div>
+      </div>
+      <!-- Buttons -->
+          <div class="flex items-center justify-center gap-2"> 
+              
+              <a href="#">
+
+                  <div class="flex justify-between px-5 md:px-5 sm:px-3 py-2 rounded-lg text-white border-[1px] hover:bg-white hover:text-black font-semibold cursor-pointer ">
+
+                      <label class="relative overflow-hidden inline-block mr-1">
+
+                        <input type="file" accept="image/*" class="absolute top-0 right-0 min-w-full min-h-full text-4xl text-right opacity-0 cursor-pointer">
+                        
+                        <span class="cursor-pointer hover:text-gray-200 hover:border-b-2 px-2 text-center hover:border-gray-300 "> Upload</span>
+                      </label>
+                  </div>
+
+              </a>
+              
+              <form action="frontPage.html" class="container">
+                  <!-- <p class="px-5 md:px-5 sm:px-3 py-2 rounded-lg text-white border-[1px] hover:bg-white hover:text-black font-semibold cursor-pointer  ">Switch Account </p> -->
+
+                  <button type="submit" class="px-5 md:px-5 sm:px-3 py-2 rounded-lg text-white border-[1px] hover:bg-white hover:text-black font-semibold cursor-pointer  " style="font-size:16px">Switch Account</button>                 
+              </form>
+
+              <p class="px-5 md:px-5 sm:px-3 py-2 rounded-lg text-black border-[1px] bg-white hover:bg-[#e8e8e8] font-semibold cursor-pointer ">Explore</p>
+          </div>
+
+      </nav>
+  </div>
+  
+
+
+  <div class="blink"><span>
+    <button class="open-button" onclick="openForm()"><p>
+        <i class="fas fa fa-solid fa-comment" style=" color: #fafafa; font-size: 20px;"></i></p></button></span></div>
+    <div class="chat-popup" id="myForm">
+      <form class="form-container">
+        <h1>Comment</h1>
+        <label for="msg"><b>Type comment</b></label>
+        <textarea placeholder="Type..." name="msg" required></textarea>
+    
+        <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+
+  <script>
+    function myFunction1() {
+      alert("Comment posted successfully!");
+    }
+    </script>
+    
+    <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    </script>
+
+
+
+  <h1 style="font-size: 50px;" class="caption">Explore the best of Crimson!</h1>
+
+  <p style="font-size: 40px; margin-bottom: 70px; " class="page-description text-center">Discover the Crimson hues</p>
+
+<div style="padding-bottom: 70px;" class="wrap">
+  <ul class="portfolio">
+
+            <li>
+                <figure>
+                  <img src="104.jpeg" alt="placeholder" />
+                  <h3>Image 1</h3><figcaption><a class="cap" href="104.jpeg">View</a></figcaption>
+                </figure>
+          
+                <div class="headers">
+                &nbsp;&nbsp;
+                <i id="myIcon1" class="icon1 fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+          
+                <script>
+                  const icon1 = document.getElementById('myIcon1');
+                  icon1.addEventListener('click', function() {
+                    // Check current color and toggle
+                    if (this.style.color === 'black') {
+                      this.style.color = '#4169E1'; // Change to any color you want
+                    } else {
+                      this.style.color = 'black';
+                    }
+                  });
+                </script>
+          
+          &nbsp; | &nbsp;
+          <a class="awe" download href="104.jpg">
+            <i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+            &nbsp;| &nbsp;
+            <a class="awe" href="https://www.facebook.com/login/">
+              <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+          
+            <div class="blink"><span>
+              <button class="open-button" onclick="openForm()"><p>
+                  <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+              <div class="chat-popup" id="myForm">
+                <form class="form-container">
+                  <h1>Chat</h1>
+                  <label for="msg"><b>Message</b></label>
+                  <textarea placeholder="Type message.." name="msg" required></textarea>
+              
+                  <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+                  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+              </div>
+            </div>
+          </li>
+
+  
+          <li>
+            <figure>
+              <img src="105.webp" alt="placeholder" />
+              <h3>Image 2</h3><figcaption><a class="cap" href="105.webp">View</a></figcaption>
+            </figure>
+      
+            <div class="headers">
+            &nbsp;&nbsp;
+            <i id="myIcon2" class="icon2 fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+      
+            <script>
+              const icon2 = document.getElementById('myIcon2');
+              icon2.addEventListener('click', function() {
+                // Check current color and toggle
+                if (this.style.color === 'black') {
+                  this.style.color = '#4169E1'; // Change to any color you want
+                } else {
+                  this.style.color = 'black';
+                }
+              });
+            </script>
+      
+      &nbsp; | &nbsp;
+      <a class="awe" download href="105.webp">
+        <i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+        &nbsp;| &nbsp;
+        <a class="awe" href="https://www.facebook.com/login/">
+          <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+      
+        <div class="blink"><span>
+          <button class="open-button" onclick="openForm()"><p>
+              <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+          <div class="chat-popup" id="myForm">
+            <form class="form-container">
+              <h1>Chat</h1>
+              <label for="msg"><b>Message</b></label>
+              <textarea placeholder="Type message.." name="msg" required></textarea>
+          
+              <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+        </div>
+      </li>
+
+
+
+      <li>
+        <figure>
+          <img src="106.webp" alt="placeholder" />
+          <h3>Image 3</h3><figcaption><a class="cap" href="106.webp">View</a></figcaption>
+        </figure>
+  
+        <div class="headers">
+        &nbsp;&nbsp;
+        <i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+  
+        <script>
+          const icon = document.getElementById('myIcon1');
+          icon.addEventListener('click', function() {
+            // Check current color and toggle
+            if (this.style.color === 'black') {
+              this.style.color = '#4169E1'; // Change to any color you want
+            } else {
+              this.style.color = 'black';
+            }
+          });
+        </script>
+  
+  &nbsp; | &nbsp;
+  <a class="awe" download href="106.webp">
+    <i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+    &nbsp;| &nbsp;
+    <a class="awe" href="https://www.facebook.com/login/">
+      <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+  
+    <div class="blink"><span>
+      <button class="open-button" onclick="openForm()"><p>
+          <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+      <div class="chat-popup" id="myForm">
+        <form class="form-container">
+          <h1>Chat</h1>
+          <label for="msg"><b>Message</b></label>
+          <textarea placeholder="Type message.." name="msg" required></textarea>
+      
+          <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+    </div>
+  </li>
+
+
+
+  <li>
+    <figure>
+      <img src="107.webp" alt="placeholder" />
+      <h3>Image 4</h3><figcaption><a class="cap" href="107.webp">View</a></figcaption>
+    </figure>
+
+    <div class="headers">
+    &nbsp;&nbsp;
+    <i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+    <script>
+      const icon = document.getElementById('myIcon1');
+      icon.addEventListener('click', function() {
+        // Check current color and toggle
+        if (this.style.color === 'black') {
+          this.style.color = '#4169E1'; // Change to any color you want
+        } else {
+          this.style.color = 'black';
+        }
+      });
+    </script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="107.webp">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+  <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+  <button class="open-button" onclick="openForm()"><p>
+      <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+  <div class="chat-popup" id="myForm">
+    <form class="form-container">
+      <h1>Chat</h1>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+      <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</div>
+</li>
+
+
+
+<li>
+    <figure>
+      <img src="108.jpeg" alt="placeholder" />
+      <h3>Image 5</h3><figcaption><a class="cap" href="108.jpeg">View</a></figcaption>
+    </figure>
+
+    <div class="headers">
+    &nbsp;&nbsp;
+    <i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+    <script>
+      const icon = document.getElementById('myIcon1');
+      icon.addEventListener('click', function() {
+        // Check current color and toggle
+        if (this.style.color === 'black') {
+          this.style.color = '#4169E1'; // Change to any color you want
+        } else {
+          this.style.color = 'black';
+        }
+      });
+    </script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="108.jpeg">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+  <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+  <button class="open-button" onclick="openForm()"><p>
+      <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+  <div class="chat-popup" id="myForm">
+    <form class="form-container">
+      <h1>Chat</h1>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+      <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</div>
+</li>
+
+
+
+<li>
+    <figure>
+      <img src="109.webp" alt="placeholder" />
+      <h3>Image 6</h3><figcaption><a class="cap" href="109.webp">View</a></figcaption>
+    </figure>
+
+    <div class="headers">
+    &nbsp;&nbsp;
+    <i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+    <script>
+      const icon = document.getElementById('myIcon1');
+      icon.addEventListener('click', function() {
+        // Check current color and toggle
+        if (this.style.color === 'black') {
+          this.style.color = '#4169E1'; // Change to any color you want
+        } else {
+          this.style.color = 'black';
+        }
+      });
+    </script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="109.webp">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+  <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+  <button class="open-button" onclick="openForm()"><p>
+      <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+  <div class="chat-popup" id="myForm">
+    <form class="form-container">
+      <h1>Chat</h1>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+      <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</div>
+</li>
+
+
+
+<li>
+    <figure>
+      <img src="110.webp" alt="placeholder" />
+      <h3>Image 7</h3><figcaption><a class="cap" href="110.webp">View</a></figcaption>
+    </figure>
+
+    <div class="headers">
+    &nbsp;&nbsp;
+    <i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+    <script>
+      const icon = document.getElementById('myIcon1');
+      icon.addEventListener('click', function() {
+        // Check current color and toggle
+        if (this.style.color === 'black') {
+          this.style.color = '#4169E1'; // Change to any color you want
+        } else {
+          this.style.color = 'black';
+        }
+      });
+    </script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="110.webp">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+  <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+  <button class="open-button" onclick="openForm()"><p>
+      <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+  <div class="chat-popup" id="myForm">
+    <form class="form-container">
+      <h1>Chat</h1>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+      <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</div>
+</li>
+
+
+
+<li>
+    <figure>
+      <img src="111.jpeg" alt="placeholder" />
+      <h3>Image 8</h3><figcaption><a class="cap" href="111.jpeg">View</a></figcaption>
+    </figure>
+
+    <div class="headers">
+    &nbsp;&nbsp;
+    <i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+    <script>
+      const icon = document.getElementById('myIcon1');
+      icon.addEventListener('click', function() {
+        // Check current color and toggle
+        if (this.style.color === 'black') {
+          this.style.color = '#4169E1'; // Change to any color you want
+        } else {
+          this.style.color = 'black';
+        }
+      });
+    </script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="111.jpeg">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+  <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+  <button class="open-button" onclick="openForm()"><p>
+      <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+  <div class="chat-popup" id="myForm">
+    <form class="form-container">
+      <h1>Chat</h1>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+      <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</div>
+</li>
+
+
+
+<li>
+    <figure>
+      <img src="104.jpeg" alt="placeholder" />
+      <h3>Image 9</h3><figcaption><a class="cap" href="104.jpeg">View</a></figcaption>
+    </figure>
+
+    <div class="headers">
+    &nbsp;&nbsp;
+    <i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+    <script>
+      const icon = document.getElementById('myIcon1');
+      icon.addEventListener('click', function() {
+        // Check current color and toggle
+        if (this.style.color === 'black') {
+          this.style.color = '#4169E1'; // Change to any color you want
+        } else {
+          this.style.color = 'black';
+        }
+      });
+    </script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="104.jpg">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+  <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+  <button class="open-button" onclick="openForm()"><p>
+      <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+  <div class="chat-popup" id="myForm">
+    <form class="form-container">
+      <h1>Chat</h1>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+      <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</div>
+</li>
+
+
+
+<li>
+    <figure>
+      <img src="104.jpeg" alt="placeholder" />
+      <h3>Image 10</h3><figcaption><a class="cap" href="104.jpeg">View</a></figcaption>
+    </figure>
+
+    <div class="headers">
+    &nbsp;&nbsp;
+    <i id="myIcon1" class="icon1 fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+    <script>
+      const icon1 = document.getElementById('myIcon1');
+      icon.addEventListener('click', function() {
+        // Check current color and toggle
+        if (this.style.color === 'black') {
+          this.style.color = '#4169E1'; // Change to any color you want
+        } else {
+          this.style.color = 'black';
+        }
+      });
+    </script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="104.jpg">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+  <i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+  <button class="open-button" onclick="openForm()"><p>
+      <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+  <div class="chat-popup" id="myForm">
+    <form class="form-container">
+      <h1>Chat</h1>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+      <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</div>
+</li>
+
+
+<li>
+<figure>
+  <img src="105.webp" alt="placeholder" />
+  <h3>Image 11</h3><figcaption><a class="cap" href="105.webp">View</a></figcaption>
+</figure>
+
+<div class="headers">
+&nbsp;&nbsp;
+<i id="myIcon2" class="icon2 fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+<script>
+  const icon2 = document.getElementById('myIcon2');
+  icon.addEventListener('click', function() {
+    // Check current color and toggle
+    if (this.style.color === 'black') {
+      this.style.color = '#4169E1'; // Change to any color you want
+    } else {
+      this.style.color = 'black';
+    }
+  });
+</script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="105.webp">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+<i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+<button class="open-button" onclick="openForm()"><p>
+  <i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+<div class="chat-popup" id="myForm">
+<form class="form-container">
+  <h1>Chat</h1>
+  <label for="msg"><b>Message</b></label>
+  <textarea placeholder="Type message.." name="msg" required></textarea>
+
+  <button type="submit" class="btn" onclick="myFunction1()">Send</button>
+  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+</div>
+</li>
+
+
+
+<li>
+<figure>
+<img src="106.webp" alt="placeholder" />
+<h3>Image 12</h3><figcaption><a class="cap" href="106.webp">View</a></figcaption>
+</figure>
+
+<div class="headers">
+&nbsp;&nbsp;
+<i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+<script>
+const icon = document.getElementById('myIcon1');
+icon.addEventListener('click', function() {
+// Check current color and toggle
+if (this.style.color === 'black') {
+  this.style.color = '#4169E1'; // Change to any color you want
+} else {
+  this.style.color = 'black';
+}
+});
+</script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="106.webp">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+<i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+<button class="open-button" onclick="openForm()"><p>
+<i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+<div class="chat-popup" id="myForm">
+<form class="form-container">
+<h1>Chat</h1>
+<label for="msg"><b>Message</b></label>
+<textarea placeholder="Type message.." name="msg" required></textarea>
+
+<button type="submit" class="btn" onclick="myFunction1()">Send</button>
+<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+</div>
+</li>
+
+
+
+<li>
+<figure>
+<img src="107.webp" alt="placeholder" />
+<h3>Image 13</h3><figcaption><a class="cap" href="107.webp">View</a></figcaption>
+</figure>
+
+<div class="headers">
+&nbsp;&nbsp;
+<i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+<script>
+const icon = document.getElementById('myIcon1');
+icon.addEventListener('click', function() {
+// Check current color and toggle
+if (this.style.color === 'black') {
+this.style.color = '#4169E1'; // Change to any color you want
+} else {
+this.style.color = 'black';
+}
+});
+</script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="107.webp">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+<i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+<button class="open-button" onclick="openForm()"><p>
+<i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+<div class="chat-popup" id="myForm">
+<form class="form-container">
+<h1>Chat</h1>
+<label for="msg"><b>Message</b></label>
+<textarea placeholder="Type message.." name="msg" required></textarea>
+
+<button type="submit" class="btn" onclick="myFunction1()">Send</button>
+<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+</div>
+</li>
+
+
+
+<li>
+<figure>
+<img src="108.jpeg" alt="placeholder" />
+<h3>Image 14</h3><figcaption><a class="cap" href="108.jpeg">View</a></figcaption>
+</figure>
+
+<div class="headers">
+&nbsp;&nbsp;
+<i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+<script>
+const icon = document.getElementById('myIcon1');
+icon.addEventListener('click', function() {
+// Check current color and toggle
+if (this.style.color === 'black') {
+this.style.color = '#4169E1'; // Change to any color you want
+} else {
+this.style.color = 'black';
+}
+});
+</script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="108.jpeg">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+<i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+<button class="open-button" onclick="openForm()"><p>
+<i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+<div class="chat-popup" id="myForm">
+<form class="form-container">
+<h1>Chat</h1>
+<label for="msg"><b>Message</b></label>
+<textarea placeholder="Type message.." name="msg" required></textarea>
+
+<button type="submit" class="btn" onclick="myFunction1()">Send</button>
+<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+</div>
+</li>
+
+
+
+<li>
+<figure>
+<img src="109.webp" alt="placeholder" />
+<h3>Image 15</h3><figcaption><a class="cap" href="109.webp">View</a></figcaption>
+</figure>
+
+<div class="headers">
+&nbsp;&nbsp;
+<i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+<script>
+const icon = document.getElementById('myIcon1');
+icon.addEventListener('click', function() {
+// Check current color and toggle
+if (this.style.color === 'black') {
+this.style.color = '#4169E1'; // Change to any color you want
+} else {
+this.style.color = 'black';
+}
+});
+</script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="109.webp">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+<i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+<button class="open-button" onclick="openForm()"><p>
+<i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+<div class="chat-popup" id="myForm">
+<form class="form-container">
+<h1>Chat</h1>
+<label for="msg"><b>Message</b></label>
+<textarea placeholder="Type message.." name="msg" required></textarea>
+
+<button type="submit" class="btn" onclick="myFunction1()">Send</button>
+<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+</div>
+</li>
+
+
+
+<li>
+<figure>
+<img src="110.webp" alt="placeholder" />
+<h3>Image 16</h3><figcaption><a class="cap" href="110.webp">View</a></figcaption>
+</figure>
+
+<div class="headers">
+&nbsp;&nbsp;
+<i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+<script>
+const icon = document.getElementById('myIcon1');
+icon.addEventListener('click', function() {
+// Check current color and toggle
+if (this.style.color === 'black') {
+this.style.color = '#4169E1'; // Change to any color you want
+} else {
+this.style.color = 'black';
+}
+});
+</script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="110.webp">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+<i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+<button class="open-button" onclick="openForm()"><p>
+<i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+<div class="chat-popup" id="myForm">
+<form class="form-container">
+<h1>Chat</h1>
+<label for="msg"><b>Message</b></label>
+<textarea placeholder="Type message.." name="msg" required></textarea>
+
+<button type="submit" class="btn" onclick="myFunction1()">Send</button>
+<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+</div>
+</li>
+
+
+
+<li>
+<figure>
+<img src="111.jpeg" alt="placeholder" />
+<h3>Image 17</h3><figcaption><a class="cap" href="111.jpeg">View</a></figcaption>
+</figure>
+
+<div class="headers">
+&nbsp;&nbsp;
+<i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+<script>
+const icon = document.getElementById('myIcon1');
+icon.addEventListener('click', function() {
+// Check current color and toggle
+if (this.style.color === 'black') {
+this.style.color = '#4169E1'; // Change to any color you want
+} else {
+this.style.color = 'black';
+}
+});
+</script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="111.jpeg">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+<i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+<button class="open-button" onclick="openForm()"><p>
+<i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+<div class="chat-popup" id="myForm">
+<form class="form-container">
+<h1>Chat</h1>
+<label for="msg"><b>Message</b></label>
+<textarea placeholder="Type message.." name="msg" required></textarea>
+
+<button type="submit" class="btn" onclick="myFunction1()">Send</button>
+<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+</div>
+</li>
+
+
+
+<li>
+<figure>
+<img src="104.jpeg" alt="placeholder" />
+<h3>Image 18</h3><figcaption><a class="cap" href="104.jpeg">View</a></figcaption>
+</figure>
+
+<div class="headers">
+&nbsp;&nbsp;
+<i id="myIcon1" class="icon fas fa fa-thumbs-up" style="color: black; font-size:20px;"></i>
+
+<script>
+const icon = document.getElementById('myIcon1');
+icon.addEventListener('click', function() {
+// Check current color and toggle
+if (this.style.color === 'black') {
+this.style.color = '#4169E1'; // Change to any color you want
+} else {
+this.style.color = 'black';
+}
+});
+</script>
+
+&nbsp; | &nbsp;
+<a class="awe" download href="104.jpg">
+<i class="fas fa fa-solid fa-download" style="color: black; font-size:20px" ></i></a>
+&nbsp;| &nbsp;
+<a class="awe" href="https://www.facebook.com/login/">
+<i class="fas fa-share" style="color: black; font-size:20px"></i></a>
+
+<div class="blink"><span>
+<button class="open-button" onclick="openForm()"><p>
+<i class="fas fa fa-solid fa-comment" style=" color: black; font-size: 20px;"></i></p></button></span></div>
+<div class="chat-popup" id="myForm">
+<form class="form-container">
+<h1>Chat</h1>
+<label for="msg"><b>Message</b></label>
+<textarea placeholder="Type message.." name="msg" required></textarea>
+
+<button type="submit" class="btn" onclick="myFunction1()">Send</button>
+<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+</div>
+</li>
+
+</div>
+
+        
+            <!-- Footer section  -->
+            <footer class="bg-gray-800 text-gray-200 pt-14 pb-6">
+              <div class="container mx-auto ">
+                  <div class="flex flex-wrap justify-between items-center pb-14">
+                      <!-- Left section of the footer -->
+                      <div class="w-full md:w-1/2 lg:w-1/3 text-center">
+                          <h3 class="text-2xl font-bold mb-4">Contact Us :</h3>
+                          <p class="hover:font-semibold hover:text-white cursor-pointer text-lg ">Email: info@crimson.com</p>
+                          <p class="hover:font-semibold hover:text-white cursor-pointer text-lg ">Phone: +1 (123) 456-7890</p>
+                      </div>
+          
+                      <!-- Middle section of the footer -->
+                      <div class="w-full md:w-1/2 lg:w-1/3 mt-6 md:mt-0 text-center">
+                          <h3 class="text-2xl font-bold mb-4">Quick Links :</h3>
+                          <ul>
+                              <li><a class="hover:font-semibold hover:text-white cursor-pointer text-lg " href="Index.html">Home</a></li>
+                              <li><a class="hover:font-semibold hover:text-white cursor-pointer text-lg " href="about.html">About Us</a></li>
+                              <li><a class="hover:font-semibold hover:text-white cursor-pointer text-lg " href="contact_final.html">Contact Us</a></li>
+                          </ul>
+                      </div>
+          
+                      <!-- Right section of the footer -->
+                      <div class="w-full mt-6 lg:w-1/3 lg:mt-0 text-center">
+                          <h3 class="text-2xl font-bold mb-4">Follow Us : </h3>
+                          <div class="flex space-x-4 justify-center">
+                              <a href="https://en-gb.facebook.com/login/" class="hover:font-semibold hover:text-white cursor-pointer text-4xl"><i class="fab fa-facebook"></i></a>
+  
+                              <a href="https://twitter.com/i/flow/login" class="hover:font-semibold hover:text-white cursor-pointer text-4xl"><i class="fab fa-twitter"></i></a>
+  
+                              <a href="https://www.instagram.com/accounts/login/?hl=en" class="hover:font-semibold hover:text-white cursor-pointer text-4xl"><i class="fab fa-instagram"></i></a>
+                              
+                          </div>
+                      </div>
+                  </div>
+          
+                  <!-- Bottom section of the footer -->
+                  <div class="pt-6 text-center text-center cursor-pointer border-t-[1px] border-gray-600">
+                      <p>&copy; 2024 Crimson.com. All rights reserved.</p>
+                  </div>
+              </div>
+          </footer>
+
+</body>
+
+
+</html>

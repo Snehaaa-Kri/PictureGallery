@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            background-image: url('215.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: sans-serif;
+        }
+
+        .container {
+            position: relative;
+            left:69%;
+            margin-top: -10px;
+            margin-right: 150px;
+            max-width: 450px;
+            padding: 16px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add some transparency to the container */
+            padding: 50px 150px;
+            padding-bottom: 200px;
+            border-radius: 15px;
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            border-radius: 15px;
+        }
+
+        input[type=text]:focus,
+        input,
+        textarea [type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+            color: black;
+            
+        }
+
+        /* Set a style for the submit button */
+        .btn {
+            background-color: #E60023;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            border-radius: 25px;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+
+        .tex:hover {
+            opacity: 1;
+        }
+
+        input {
+            padding: 30px;
+            border: 0;
+            width: 420px;
+            border-radius: 15px;
+            background-color: #f1f1f1;
+            color: white;
+            border: none;
+            font-family: sans-serif;
+            font-size: 15px;
+        }
+
+        textarea {
+            border: 0;
+            height: 70px;
+            width: 450px;
+            border-radius: 15px;
+            background-color: #f1f1f1;
+            color: rgb(0, 0, 0);
+            border: none;
+            font-family: sans-serif;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <table>
+        <tr>
+            <td>
+                <form action="Thankyou.html" class="container">
+                 
+                    <br> 
+                    <p style="color: #61616c; text-align: center; font-size: 45px;margin-left:40px; margin-top: -10px;">Get in touch with us</p>
+                    <p style="color: #6d6d6c; text-align: center;  font-size: 18px;margin-top:-40px;margin-left:45px;">We’ll get back to you as soon as possible.</p>
+                    
+                    <br> <br>
+                    <br>
+                    <label for="name"><b>Email Address</b> </label>
+                    <input type="text" placeholder="Enter Email Address" name="name" required>
+                
+                    <label for="email"><b>Mobile Number</b> </label>
+                    <input type="text" placeholder="Enter Mobile Number" name="email" required>
+                
+                    <label onfocus="border = 'none'; outline: none;" for="psw"><b>Feedback</b></label>
+                    <div class="styled-input wide">
+                    <textarea placeholder="Enter your Feedback" required></textarea></div>
+
+                    <table style="display: flex; justify-content: center;">
+                      <tr>
+                          <td>
+                      
+                                  <button type="submit" class="btn" style="font-size:16px">Continue</button>                 
+                            
+                          </td>
+                      </tr>
+                  </table>
+
+                    
+                    <br><br>
+                    <center><p>By continuing, you agree to "Name's" <b>terms and conditions</b> and aknowledge that you have read
+                      our <b> Privacy Policy.</b></p></center>
+                 
+                </form>
+            </td>
+        </tr>
+    </table>
+
+
+
+</body>
+
+</html>

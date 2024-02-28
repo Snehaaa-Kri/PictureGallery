@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* Your existing styles here */
+
+        body {
+            /* Additional styles for the thank you page */
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .thank-you-message {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .btn {
+            background-color: #E60023;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            border-radius: 25px;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+    <!-- Your existing HTML structure here -->
+    
+
+    <!-- Thank You Message Section -->
+    <div class="thank-you-message">
+        <h2>Thank You for Contacting Us!</h2>
+        <p>We appreciate your feedback and will get back to you as soon as possible.</p>
+        <p>Have a great day!</p>
+
+        <table style="display: flex; justify-content: center;">
+            <tr>
+                <td>
+                    
+                    <form action="Index.html" class="container">
+                        <button type="submit" class="btn" style="font-size:16px">Go to home</button>                 
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Assuming the form has an ID attribute 'myForm'
+        document.getElementById('myForm').addEventListener('submit', function () {
+            // Redirect to the thank you page after form submission
+            window.location.href = 'thank-you.html';
+        });
+    </script>
+</body>
+
+</html>
